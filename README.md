@@ -1,1 +1,1 @@
-# html-parser
+Bu bir Ruby ile HTML Parser projesidir.
