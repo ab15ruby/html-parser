@@ -2,6 +2,10 @@ class HTML_Parser
 	def self.strip_tags(source)
 		source.scan /<[\!\sa-zA-Z0-9]+>[\w\s\,\.\;\"\!\=\-çşığüöÇÖŞİÜĞ<>\/]+<\/[a-zA-Z0-9]+>/
 	end
+ 	
+ 	def self.strip_tags2 (source)
+			source.scan /<[\/\!\sa-zA-Z0-9]+>/
+	end
 end
 
 source = 
@@ -22,4 +26,17 @@ source =
 	</div>
 </body>'
 
-p HTML_Parser.strip_tags source
+dizi = HTML_Parser.strip_tags source
+
+x = HTML_Parser.strip_tags2 source
+level = 10
+x.each_with_index do |el, i|
+  unless el.match(/\//)
+	  if !(x[i+1].nil?) && x[i+1] == el[0] + "/" + el[1..-1]
+	  	level += 1
+	  else
+	  	level -= 1
+	  end
+	  puts "--"*level + el 
+  end
+end
