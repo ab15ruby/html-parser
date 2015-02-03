@@ -1,10 +1,6 @@
-class String
-	def strip_tags
-		self.scan /<[\!\sa-zA-Z0-9]+>[\w\s\,\.\;\"\!\=\-çşığüöÇÖŞİÜĞ<>\/]+<\/[a-zA-Z0-9]+>/
-	end
-
-	def method_name
-		
+class HTML_Parser
+	def self.strip_tags(source)
+		source.scan /<[\!\sa-zA-Z0-9]+>[\w\s\,\.\;\"\!\=\-çşığüöÇÖŞİÜĞ<>\/]+<\/[a-zA-Z0-9]+>/
 	end
 end
 
@@ -26,4 +22,4 @@ source =
 	</div>
 </body>'
 
-p source.strip_tags
+p HTML_Parser.strip_tags source
